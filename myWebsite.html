@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addictions timer</title>
+<title>By Moiz Siddiqui</title>
+<style>
+    /* Main styling */
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        
+        /* Background image styling */
+        background-image: url('download.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white; /* For better text readability on darker backgrounds */
+    }
+
+    h1, h2 {
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
+    }
+
+    #timer {
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Button styling */
+    .button {
+        padding: 10px 20px;
+        font-size: 1em;
+        margin: 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+
+    #relapseBtn {
+        background-color: #ff6b6b;
+    }
+
+    #panicBtn {
+        background-color: #4caf50;
+    }
+
+    /* Popup styling */
+    #popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.95); /* Light background with slight transparency */
+        color: black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow-y: auto;
+        max-height: 80vh;
+    }
+
+    #popup h2 {
+        margin-top: 0;
+    }
+
+    #popupContent {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+
+    #closePopup {
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 1em;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #subredditLink {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 1em;
+        background-color: #0073e6;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+    }
+    #boredButton {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 1em;
+        background-color: #0073e6;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+    }
+    #comic {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 1em;
+        background-color: #0073e6;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<h1>Addictions Timer, By Moiz Siddiqui</h1>
+<h2 id="motivationalMessage"></h2>
+<div id="timer">Years: 0, Months: 0, Days: 0, Hours: 0, Minutes: 0, Seconds: 0</div>
+<button id="relapseBtn" class="button" onclick="resetTimer()">Relapse</button>
+<button id="panicBtn" class="button" onclick="openPopup()">Panic</button>
+
+<!-- Popup window -->
+<div id="popup">
+    <h2>Benefits of Abstaining from PMO</h2>
+    <div id="popupContent">
+        <ol>
+            <li>Clarity of mind, no mental clutter</li>
+            <li>Better stamina in sports</li>
+            <li>Absence of depression, as in "there's actually nothing wrong with me"</li>
+            <li>Better short term memory, grasp conversations, sharp and clear mind</li>
+            <li>Feeling worthy of hottest girls</li>
+            <li>Interacting with people goes from nuisance to fun activity</li>
+            <li>Facial hair grows faster</li>
+            <li>Music sounds better</li>
+            <li>Being cool with awkward situations</li>
+            <li>Past events are remembered better</li>
+            <li>Movies watched in one sitting, rather than interrupting it with distractions</li>
+            <li>Feeling of being really alive and feeling of having/being a powerful spirit</li>
+            <li>Better looking skin</li>
+            <li>Free, genuine belly laugh</li>
+            <li>Appreciation and admiration of women's inner and outer beauty</li>
+            <li>Less sleep is needed to feel rested</li>
+            <li>Much less irritability</li>
+            <li>Destructive erections</li>
+            <li>Improved chest, neck and shoulders musculature (without exercise in a particular case)</li>
+            <li>Vibrant and alive looking eyes</li>
+            <li>Voice is now clear</li>
+            <li>Reduced rage and anger</li>
+            <li>Movies, novels, and art are appreciated much more</li>
+            <li>Better dream recollection</li>
+            <li>More wisdom on various subjects, without actually studying them</li>
+            <li>Easier to get up in the morning</li>
+            <li>Heightened senses and intuition</li>
+            <li>Enjoying company of kids and older folks</li>
+            <li>No more craving for sugar and alcohol</li>
+            <li>Urge to expand your mind</li>
+            <li>No more angry outbursts around the family</li>
+            <li>"Annoying" things females do are now appreciated</li>
+            <li>A tangible magnetic connection with chicks</li>
+            <li>Chores are now easier to perform</li>
+            <li>Seeing "big picture" in life better</li>
+            <li>Ability to look at women and feel her, sense if her energy is good or bad</li>
+            <li>Ability to relate to chicks like friends and seeing them flock to you</li>
+            <li>Nothing stresses you out anymore</li>
+            <li>Men respect you more</li>
+            <li>Men flinch in your presence</li>
+            <li>Sexual stamina</li>
+            <li>Gives you a magnetic personality</li>
+        </ol>
+    </div>
+    
+    <a id="subredditLink" href="https://www.reddit.com/r/GetMotivated/?rdt=50001" target="_blank">Find some motivation</a>
+    <a id="boredButton" href="https://www.boredbutton.com/" target="_blank">Keep the mind busy, press the bored button</a>
+    <button id="closePopup" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+    const motivationalWords = [
+        "Stay Strong!",
+        "You Got This!",
+        "Keep Going!",
+        "Believe in Yourself!",
+        "One Step at a Time!"
+    ];
+    // Initialize timer variables
+    let startTime = localStorage.getItem('addictionsStartTime');
+    if (!startTime) {
+        startTime = new Date().getTime();
+        localStorage.setItem('addictionsStartTime', startTime);
+    } else {
+        startTime = parseInt(startTime);
+    }
+
+    // Update the motivational message every minute
+    function updateMotivationalMessage() {
+        const now = new Date().getTime();
+        const elapsed = now - startTime;
+        const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+
+        if (minutes > 1) {
+            // Select a random motivational word
+            const randomIndex = Math.floor(Math.random() * motivationalWords.length);
+            document.getElementById('motivationalMessage').textContent = motivationalWords[randomIndex];
+        }
+    }
+    function updateTimer() {
+        const now = new Date().getTime();
+        const elapsed = now - startTime;
+
+        const seconds = Math.floor((elapsed / 1000) % 60);
+        const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+        const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
+        const days = Math.floor((elapsed / (1000 * 60 * 60 * 24)) % 30.4375);
+        const months = Math.floor((elapsed / (1000 * 60 * 60 * 24 * 30.4375)) % 12);
+        const years = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 365.25));
+
+        document.getElementById('timer').textContent =
+            `Years: ${years}, Months: ${months}, Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`;
+    }
+
+    // Reset the timer to the current time
+    function resetTimer() {
+        startTime = new Date().getTime();
+        localStorage.setItem('addictionsStartTime', startTime);
+        updateTimer();
+    }
+
+    // Open the popup with benefits
+    function openPopup() {
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    // Close the popup
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    // Start the timer
+    setInterval(updateTimer, 1000);
+    updateTimer();  // Initial call to display immediately
+    updateMotivationalMessage();
+</script>
+
+</body>
+</html>
